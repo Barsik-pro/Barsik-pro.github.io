@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skibedi tualet</title>
+    <style>
+        #board {
+            height:  350px;
+            width: 650px;
+            background-image: url('париж.jpg');
+            border: 1px solid black;
+        }
+
+        .character {
+            background-image: url('плохой.jpg');
+            background-size: cover;
+            width: 120px;
+            height: 120px;
+            padding:10px;
+            margin:10px;
+            float: left;
+        }
+        .thief {
+            background-image: url('хороший.jpg');
+            background-size: cover;
+        }
+           
+        
+
+        .hidden{
+            display: none;
+
+        }
+
+        .visible{
+            display: block;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="board">
+        <div class="character">1</div>
+        <div class="character">2</div>
+        <div class="character">3</div>
+        <div class="character">4</div>
+        <div class="character">5</div>
+        <div class="character" >6</div>
+
+
+    </div>
+    <p id="10"></p>
+    <input type="button"
+    value="Играть" onclick="startGame();">
+    <script>
+        function startGame() {
+            gameLoop();
+
+        }
+        var loops = 0
+        var peopleVisible = false;
+        var gameScore = 0;
+        function gameLoop() {
+            loops++;
+            peopleVisible = !peopleVisible;
+            flashCharacters();
+            createCharacter();
+            
+            if(loops < 12){
+            setTimeout(gameLoop, peopleVisible ? 1000 : 3000);
+            } else {
+               
+                var to = document.getElementById('10')
+                to.innerHTML = ('Игра окончена🥵 Ваш счёт:' + gameScore);
+            }
+        }
+        function flashCharacters() {
+            var board = document.getElementById('board');
+            var classToSet = '';
+            if (peopleVisible) {
+                classToSet = 'character visible';
+            } else {
+                classToSet = 'character hidden'
+            }
+            for (var i = 0; i < 6; i++) {
+                board.children[i].className = classToSet;
+            }
+
+        }
+
+        function createCharacter() {
+            var board = document.getElementById('board')
+            for (var i = 0; i < 6; i++) {
+                board.children[i].innerHTML = ''
+                board.children[1].onclick = function() {
+
+                    gameScore = gameScore - 2;
+                }
+        }
+        var randomNumber = Math.floor(Math.random() * 5);
+        board.children[randomNumber].innerHTML = '';
+        board.children[randomNumber].className += ' thief'
+        board.children[randomNumber].onclick = function() {
+            gameScore++;
+        }
+    }                                                                                                                                                                                                                                                    
+    </script>
+</body>
+</html>
