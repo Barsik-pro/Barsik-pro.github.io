@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Counter</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    button {
+      background-color: blue;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    #counter {
+      font-size: 48px;
+      color: #4CAF50;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    body {
+      background-image: url(Хамстер.jpg);
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <button id="click-me">Тапай меня</button>    
+  <button id="прокачка + 1 клик">Прокачать + 1 клик</button>
+  <button id="прокачка + 2 клик">Прокачать + 2 клик</button>
+  <button id="автокликер">автокликер + 1 в секунду</button>
+
+  <div id="counter">0</div>
+
+  <script>
+    var count = 0;
+    var tap = 1;
+    var avto = 1;
+
+    var button = document.getElementById("click-me");
+    var counter = document.getElementById("counter");
+    button.addEventListener("click", function() {
+      count += tap;
+      counter.innerHTML = count;
+
+      
+    });
+    var button1 = document.getElementById("прокачка + 1 клик")
+    button1 .addEventListener ("click", function() {
+      tap++;
+    });
+    var button2 = document.getElementById("прокачка + 2 клик")
+    button2.addEventListener("click", function() {
+      tap +=2;
+    })
+    var avto = document.getElementById("автокликер")
+    avto.addEventListener("click", function() {
+      avto1();
+    }
+      
+    )
+    function avto1() {
+      count++; 
+      counter.innerHTML = count;
+      setTimeout("avto1();", 1000)
+    }
+
+
+
+
+  </script>
+</body>
+</html>
