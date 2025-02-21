@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День Родного Русского Языка</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #006400;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #006400;
+        }
+
+        .text-correction {
+            margin-top: 20px;
+        }
+
+        .text-correction textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .text-correction button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #006400;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .text-correction button:hover {
+            background-color: #004d00;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>День Родного Языка</h1>
+    <p>Давайте поиграем в мою викторину!</p>
+
+    <div class="quiz-container">
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+        <img src="" id="lol" alt="">
+        <div class="text-correction hidden" id="text-correction">
+            <h1></h1>
+            <p>Исправьте ошибки в тексте:</p>
+            <textarea id="correction-text" placeholder="Введите ответ..."></textarea>
+            
+            <button onclick="checkTextCorrection()">Проверить</button>
+            <p class="feedback" id="correction-feedback"></p>
+        </div>
+        <div class="result hidden" id="result"></div>
+        <button class="hidden" id="next-button" onclick="nextQuestion()">Следующий вопрос</button>
+    </div>
+    
+
+    <script>
+        const questions = [
+            {
+                type: "multiple-choice",
+                question: "Какое слово написано с ошибкой?",
+                options: ["Олфавит", "Искусство", "Библиотека", "Компьютер"],
+                answer: "Олфавит"
+            },
+            {
+                type: "multiple-choice",
+                question: "Выберите правильный вариант написания:",
+                options: ["Подъезд", "Подиезд", "Подъезт", "Подьезд"],
+                answer: "Подъезд"
+            },
+            {
+                type: "multiple-choice",
+                question: "Какое слово является синонимом слова 'красивый'?",
+                options: ["Уродливый", "Прекрасный", "Страшный", "Неприглядный"],
+                answer: "Прекрасный"
+            },
+            {
+                type: "multiple-choice",
+                question: "Какое слово является антонимом слова 'светлый'?",
+                options: ["Яркий", "Темный", "Блестящий", "Сияющий"],
+                answer: "Темный"
+            },
+            {
+                type: "multiple-choice",
+                question: "Работаем по группам",
+                options: ["Работаем"],
+                answer: "Работаем"
+            },
+            {
+                type: "text-correction",
+                question: "Исправьте ошибки в тексте: 'Сигодня я иду в тиатр'",
+                answer: "Сегодня я иду в театр"
+            },
+            {
+                type: "text-correction",
+                question: "Какое слово здесь загадано? <br>Рим, Обоюдно, Семён, Сандали, Империя, Япония",
+                answer: "Россия"
+
+            },
+            {
+                type: "text-correction",
+                question: "Сколько букв в русском алфавите?",
+                answer: "33"
+
+            },
+            {
+                type: "text-correction",
+                question: "Сколько согласных букв? ",
+                answer: "21"
+
+            }, {
+                type: "text-correction",
+                question: " Сколько гласных букв? ",
+                answer: "10"
+
+            }, {
+                type: "text-correction",
+                question: "Какой первый звук в слове Яблоко?",
+                answer: "й"
+
+            },   {
+                type: "text-correction",
+                question: " Из одного большого слова ДОСТОПРИМЕЧАТЕЛЬНОСТЬ составить как можно больше маленьких слов.",
+                answer: "Дом, мода, сто, тост, ель, сон, нос, мечта, прима, тело и др."
+
+            },
+            {
+                type: "text-correction",
+                question: "Прежде чем вся 7я о5 сядет за 100л, пре2рительно вы3 со 100ла",
+                answer: "Прежде чем вся семья опять сядет за стол, предварительно вытри со стола",
+                
+
+
+            },
+            {
+                type: "multiple-choice",
+                question: "По вертикали: <br>2. Прием пищи, обычно в середине дня. (Обед) <br>3. Широкая дорога с твёрдым покрытие. (Шоссе) <br>5. Месяц, с которого начинается зима. (Декабрь) <br>7. Следующий за сегодняшним днем. (Завтра) <br>11. Птица, с чёрно-белым оперением. (Сорока) <br>По горизонтали: <br>1. Первый день недели. (Понедельник) <br>4. Пассажирский вид транспорта. (Автобус) <br>6. Вкусный сочный фрукт. (Яблоко) <br>8. То, что указывают на письме, отправляя его по почте. (Адрес) <br>9. Учащийся в школе. (Ученик) <br>10. Служба, занятие, как источник заработка. (Работа)",
+                options: ["Готово"],
+                answer: "Готово",
+                img: "https://ped-kopilka.ru/upload/blogs2/2021/7/72524_97f8bb62dd6ea402c33696b5f3695b2b.jpg.jpg"
+            },
+            
+            
+            
+
+
+
+
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const resultElement = document.getElementById('result');
+        const textCorrectionElement = document.getElementById('text-correction');
+        const correctionFeedbackElement = document.getElementById('correction-feedback');
+        const nextButton = document.getElementById('next-button');
+        const img = document.getElementById('lol');
+
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            questionElement.innerHTML = q.question;
+            optionsElement.innerHTML = '';
+            img.src = q.img;
+            textCorrectionElement.classList.add('hidden');
+            nextButton.classList.add('hidden');
+
+            if (q.type === "multiple-choice") {
+                q.options.forEach(option => {
+                    const button = document.createElement('div');
+                    button.textContent = option;
+                    button.classList.add('option');
+                    button.addEventListener('click', () => checkAnswer(option, q.answer));
+                    optionsElement.appendChild(button);
+                });
+            } else if (q.type === "text-correction") {
+                textCorrectionElement.classList.remove('hidden');
+                correctionFeedbackElement.textContent = '';
+                document.getElementById('correction-text').value = '';
+            }
+        }
+
+        function checkAnswer(selected, correctAnswer) {
+            const feedback = document.createElement('p');
+            feedback.classList.add('feedback');
+            if (selected === correctAnswer) {
+                feedback.textContent = "Правильно!";
+                feedback.classList.add('correct');
+                score++;
+            } else {
+                feedback.textContent = `Неправильно. Правильный ответ: ${correctAnswer}`;
+                feedback.classList.add('incorrect');
+            }
+            optionsElement.appendChild(feedback);
+            nextButton.classList.remove('hidden');
+        }
+
+        function checkTextCorrection() {
+            const userText = document.getElementById('correction-text').value.trim();
+            const q = questions[currentQuestion];
+            if (userText === q.answer) {
+                correctionFeedbackElement.textContent = "Правильно!";
+                correctionFeedbackElement.classList.add('correct');
+                correctionFeedbackElement.classList.remove('incorrect');
+                score++;
+            } else {
+                correctionFeedbackElement.textContent = "Неправильно. Попробуйте еще раз.";
+                correctionFeedbackElement.classList.add('incorrect');
+                correctionFeedbackElement.classList.remove('correct');
+            }
+            nextButton.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            questionElement.textContent = '';
+            optionsElement.innerHTML = '';
+            textCorrectionElement.classList.add('hidden');
+            nextButton.classList.add('hidden');
+            resultElement.textContent = `Ваш результат: ${score} из ${questions.length}`;
+            resultElement.classList.remove('hidden');
+        }
+        loadQuestion();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Введи свой любимый фильм</p>
+    <input type="text" id="yearInput" placeholder="Введите фильм" />
+    <button class="button" id="checkButton">Проверить</button>
+    <div class="result" id="result"></div>
+    </div>
+    <script>
+        document.getElementById('checkButton').addEventListener('click', function () {
+            var year = document.getElementById('yearInput').value;
+            var resultElement = document.getElementById('result');
+
+            if (year == "Один дома" || year == "Ирония судьбы") {
+                resultElement.innerText = year + ' Отличный выбор пупс';
+            } else {
+                resultElement.innerText = year + ' Нефр посмотри классику';
+            }
+        });
+    </script>
+</body>
+
+</html>

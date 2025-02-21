@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t</title>
+</head>
+
+<body>
+    <p> ГОЙДАААААА</p>
+    <button class="button" id="checkButton">Проверить</button>
+    <div class="result" id="result"></div>
+    <script>
+        document.getElementById('checkButton').addEventListener('click', function () {
+            var resultElement = document.getElementById('result');
+
+            var number = Math.floor(Math.random() * 101)
+        if (number >= 0 && number < 51) {
+            resultElement.innerText = "Немощ и изгой"
+        } else if (number >= 51 && number < 101) {
+            resultElement.innerText = "Сигма"
+        }
+        })
+        
+
+    </script>
+</body>
+
+</html>

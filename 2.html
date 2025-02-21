@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Введи скоко дней до нового года</p>
+    <input type="number" id="yearInput" placeholder="Введите дни" />
+    <button class="button" id="checkButton">Проверить</button>
+    <div class="result" id="result"></div>
+    </div>
+    <script>
+        document.getElementById('checkButton').addEventListener('click', function () {
+            var year = parseInt(document.getElementById('yearInput').value, 10);
+            var resultElement = document.getElementById('result');
+
+            if (isNaN(year)) {
+                resultElement.innerText = ' введите корректный пупса';
+            } else if (year < 7 && year < 7) {
+                resultElement.innerText = year + ' Торопись';
+            } else {
+                resultElement.innerText = year + ' Успеешь';
+            }
+        });
+    </script>
+</body>
+
+</html>
