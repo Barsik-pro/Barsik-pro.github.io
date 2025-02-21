@@ -272,7 +272,7 @@
         function checkTextCorrection() {
             const userText = document.getElementById('correction-text').value.trim();
             const q = questions[currentQuestion];
-            if (userText === q.answer) {
+            if (userText.toLowerCase() === q.answer.toLowerCase()) {
                 correctionFeedbackElement.textContent = "Правильно!";
                 correctionFeedbackElement.classList.add('correct');
                 correctionFeedbackElement.classList.remove('incorrect');
