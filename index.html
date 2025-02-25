@@ -100,6 +100,11 @@
         .incorrect {
             color: red;
         }
+
+        img {
+            float: left;
+
+        }
     </style>
 </head>
 
@@ -108,10 +113,11 @@
     <h1>День Родного Языка</h1>
     <p>Давайте поиграем в мою викторину!</p>
 
+    <img src="" id="lol" alt="" width="500">
     <div class="quiz-container">
         <div class="question" id="question"></div>
         <div class="options" id="options"></div>
-        <img src="" id="lol" alt="">
+        
         <div class="text-correction hidden" id="text-correction">
             <h1></h1>
             <p>Напишите ответ</p>
@@ -123,7 +129,7 @@
         <div class="result hidden" id="result"></div>
         <button class="hidden" id="next-button" onclick="nextQuestion()">Следующий вопрос</button>
     </div>
-    
+    <img src="" id="lal" alt="" width="500" style="float: right;">
 
     <script>
         const questions = [
@@ -131,85 +137,157 @@
                 type: "multiple-choice",
                 question: "Какое слово написано с ошибкой?",
                 options: ["Олфавит", "Искусство", "Библиотека", "Компьютер"],
-                answer: "Олфавит"
+                answer: "Олфавит",
+                img: "https://avatars.dzeninfra.ru/get-zen_doc/1244179/pub_62e41a4477aa332473c65a72_62e41d0877aa332473c9ed2f/scale_1200"
             },
             {
                 type: "multiple-choice",
                 question: "Выберите правильный вариант написания:",
                 options: ["Подъезд", "Подиезд", "Подъезт", "Подьезд"],
-                answer: "Подъезд"
+                answer: "Подъезд",
+                img: "https://novostrojka-anapy.ru/upload/0s7QIP1m8idsj6dO.jpg"
             },
             {
                 type: "multiple-choice",
                 question: "Какое слово является синонимом слова 'красивый'?",
                 options: ["Уродливый", "Прекрасный", "Страшный", "Неприглядный"],
-                answer: "Прекрасный"
+                answer: "Прекрасный",
+                img: "https://i.pinimg.com/originals/23/c8/6d/23c86d3272e792da4d72918d84c4345d.jpg"
             },
             {
                 type: "multiple-choice",
                 question: "Какое слово является антонимом слова 'светлый'?",
                 options: ["Яркий", "Темный", "Блестящий", "Сияющий"],
-                answer: "Темный"
+                answer: "Темный",
+                img: "https://cdn.culture.ru/images/0490748d-f282-5823-be86-44afacb35053"
             },
             {
                 type: "multiple-choice",
                 question: "Работаем по группам",
                 options: ["Работаем"],
-                answer: "Работаем"
+                answer: "Работаем",
+                img: "https://avatars.mds.yandex.net/i?id=38f10d9196d7e2f240c5308fb9ac0f33_l-4778198-images-thumbs&n=13"
             },
             {
                 type: "text-correction",
                 question: "Исправьте ошибки в тексте: 'Сигодня я иду в тиатр'",
-                answer: "Сегодня я иду в театр"
+                answer: "Сегодня я иду в театр",
+                img: "https://cdn.culture.ru/images/22501475-eff8-506a-b170-78b7ead31d87"
             },
             {
                 type: "text-correction",
                 question: "Какое слово здесь загадано? <br>Рим, Обоюдно, Сигма, Сандали, Империя, Япония",
-                answer: "Россия"
+                answer: "Россия",
+                img: "https://cdn1.ozone.ru/s3/multimedia-l/6622558581.jpg"
 
             },
             {
                 type: "text-correction",
                 question: "Сколько букв в русском алфавите?",
-                answer: "33"
+                answer: "33",
+                img: "https://cdn1.ozone.ru/multimedia/1013902751.jpg"
 
             },
             {
                 type: "text-correction",
                 question: "Сколько согласных букв? ",
-                answer: "21"
+                answer: "21",
+                img: "https://cdn.culture.ru/images/632bf1eb-8421-5dcc-9e10-4d601474f2ca"
 
             }, {
                 type: "text-correction",
                 question: " Сколько гласных букв? ",
-                answer: "10"
+                answer: "10",
+                img: "https://thxmax.ru/wp-content/uploads/zolotaya-bukva-sh-skachat-besplatno-vektor.png"
 
             }, {
                 type: "text-correction",
                 question: "Какой первый звук в слове Яблоко?",
-                answer: "й"
+                answer: "Й",
+                img: "https://i.pinimg.com/736x/2c/cf/d9/2ccfd976f2a6d51babcdfc0678ea25cd.jpg",
 
             },   {
                 type: "text-correction",
                 question: " Из одного большого слова ДОСТОПРИМЕЧАТЕЛЬНОСТЬ составить как можно больше маленьких слов.",
-                answer: "Да"
+                answer: "Да",
+                img: "https://i.pinimg.com/originals/1f/19/74/1f197431823b4f30233c26106bb542d5.jpg"
 
             },
             {
                 type: "text-correction",
                 question: "Прежде чем вся 7я о5 сядет за 100л, пре2рительно вы3 со 100ла",
                 answer: "Прежде чем вся семья опять сядет за стол, предварительно вытри со стола",
+                img: "https://pickimage.ru/wp-content/uploads/images/detskie/bukvaL/characterL60.jpg"
                 
 
 
             },
             {
-                type: "multiple-choice",
-                question: "По вертикали: <br>2. Прием пищи, обычно в середине дня. (Обед) <br>3. Широкая дорога с твёрдым покрытие. (Шоссе) <br>5. Месяц, с которого начинается зима. (Декабрь) <br>7. Следующий за сегодняшним днем. (Завтра) <br>11. Птица, с чёрно-белым оперением. (Сорока) <br>По горизонтали: <br>1. Первый день недели. (Понедельник) <br>4. Пассажирский вид транспорта. (Автобус) <br>6. Вкусный сочный фрукт. (Яблоко) <br>8. То, что указывают на письме, отправляя его по почте. (Адрес) <br>9. Учащийся в школе. (Ученик) <br>10. Служба, занятие, как источник заработка. (Работа)",
-                options: ["Готово"],
-                answer: "Готово",
-                img: "https://ped-kopilka.ru/upload/blogs2/2021/7/72524_97f8bb62dd6ea402c33696b5f3695b2b.jpg.jpg"
+                type: "text-correction",
+                question: "Первый космонавт ",
+                
+                answer: "Юрий Алексеевич Гагарин ",
+                img: "https://avatars.mds.yandex.net/i?id=2e0435754c561c45b29af2a42a48fc14_l-5262023-images-thumbs&n=13"
             },
+            {
+                type: "text-correction",
+                question: "Буквы выучи сперва, <br>А потом сложи в слова. <br>Тот, кто знает алфавит, <BR>Будет знать ...",
+                answer: "Русский язык",
+                img: "https://i.pinimg.com/736x/51/a0/01/51a00194f261b1530471c549be7d80f9.jpg"
+                
+        
+            },
+            {
+                type: "text-correction",
+                question: "Напишите словами число 552",
+                answer: "Пятьсот пятьдесят два",
+                img: "https://avatars.mds.yandex.net/i?id=d30f21a77ea34936e4a2079fe832703f_l-5304749-images-thumbs&n=13"
+                
+        
+            },
+            {
+                type: "multiple-choice",
+                question: "Какое из этих слов в среднем роде",
+                options: ["Тюль", "Кофе", "Время", "Арбуз"],
+                answer: "Время",
+                img: "https://cdn.culture.ru/images/c57318f1-60f6-5af8-bf93-072ab30cd21a"
+            },
+            {
+                type: "text-correction",
+                question: "Кто самый первый входит в дом, <br>А все за ним идут хвостом?",
+                answer: "Ключ",
+                img: "https://avatars.mds.yandex.net/i?id=5cccd4fb468fa032ca605ccbadc0c900_l-8210460-images-thumbs&n=13"
+                
+        
+            },
+            {
+                type: "multiple-choice",
+                question: "Как в устной речи одно предложение отделяется от другого?",
+                options: ["Знаками препинания", "Ничем", "С помощью пауз и интонации", "С помощью восклитательных знаков"],
+                answer: "С помощью пауз и интонации",
+                
+            },
+            {
+                type: "text-correction",
+                question: "Какое слово было загадано?",
+                answer: "Школа",
+                img: "https://a.d-cd.net/UK4z3vEU7U8YBauQadtL5SOsTT8-1920.jpg"
+                
+        
+            },
+            {
+                type: "text-correction",
+                question: "Поздравляю вы прошли тест",
+                answer: "Да",
+                img: "https://www.thesun.co.uk/wp-content/uploads/2020/06/NINTCHDBPICT000587012955.jpg?strip=all&w=854"
+                
+        
+            },
+
+
+
+            
+
             
             
             
@@ -228,14 +306,17 @@
         const textCorrectionElement = document.getElementById('text-correction');
         const correctionFeedbackElement = document.getElementById('correction-feedback');
         const nextButton = document.getElementById('next-button');
-        const img = document.getElementById('lol');
+        const imgLol = document.getElementById('lol');
+        const imgLal = document.getElementById('lal');
+        
 
 
         function loadQuestion() {
             const q = questions[currentQuestion];
             questionElement.innerHTML = q.question;
             optionsElement.innerHTML = '';
-            img.src = q.img;
+            imgLol.src = q.img;
+            imgLal.src = q.img;
             textCorrectionElement.classList.add('hidden');
             nextButton.classList.add('hidden');
 
