@@ -103,6 +103,7 @@
 
         img {
             float: left;
+            float: none;
 
         }
     </style>
@@ -113,7 +114,7 @@
     <h1>День Родного Языка</h1>
     <p>Давайте поиграем в мою викторину!</p>
 
-    <img src="" id="lol" alt="" width="500">
+    <img src="" id="lol" alt="" width="400">
     <div class="quiz-container">
         <div class="question" id="question"></div>
         <div class="options" id="options"></div>
@@ -129,7 +130,7 @@
         <div class="result hidden" id="result"></div>
         <button class="hidden" id="next-button" onclick="nextQuestion()">Следующий вопрос</button>
     </div>
-    <img src="" id="lal" alt="" width="500" style="float: right;">
+    <img src="" id="lal" alt="" width="0" height="0" style="float: right;">
 
     <script>
         const questions = [
@@ -161,61 +162,55 @@
                 answer: "Темный",
                 img: "https://cdn.culture.ru/images/0490748d-f282-5823-be86-44afacb35053"
             },
-            {
-                type: "multiple-choice",
-                question: "Работаем по группам",
-                options: ["Работаем"],
-                answer: "Работаем",
-                img: "https://avatars.mds.yandex.net/i?id=38f10d9196d7e2f240c5308fb9ac0f33_l-4778198-images-thumbs&n=13"
-            },
+            
             {
                 type: "text-correction",
-                question: "Исправьте ошибки в тексте: 'Сигодня я иду в тиатр'",
+                question: "Исправьте ошибки в тексте: 'Сигодня я иду в тиатр'*",
                 answer: "Сегодня я иду в театр",
                 img: "https://cdn.culture.ru/images/22501475-eff8-506a-b170-78b7ead31d87"
             },
             {
                 type: "text-correction",
-                question: "Какое слово здесь загадано? <br>Рим, Обоюдно, Сигма, Сандали, Империя, Япония",
+                question: "Какое слово здесь загадано? <br>Рим, Обоюдно, Сигма, Сандали, Империя, Япония (1 минута)",
                 answer: "Россия",
-                img: "https://cdn1.ozone.ru/s3/multimedia-l/6622558581.jpg"
+                img: "https://mintrans.kbr.ru/upload/iblock/de6/4y0k45dkd1piys6izv3z9jamzovdtpbh/Skrinshot-23_03_2024-19.17.11.png"
 
             },
             {
                 type: "text-correction",
-                question: "Сколько букв в русском алфавите?",
+                question: "Сколько букв в русском алфавите? (пол минуты)",
                 answer: "33",
-                img: "https://cdn1.ozone.ru/multimedia/1013902751.jpg"
+                img: "https://avatars.mds.yandex.net/get-ydo/1649611/2a0000016e1c83538ea39a3dff58231b6c53/diploma"
 
             },
             {
                 type: "text-correction",
-                question: "Сколько согласных букв? ",
+                question: "Сколько согласных букв? (пол минуты)",
                 answer: "21",
                 img: "https://cdn.culture.ru/images/632bf1eb-8421-5dcc-9e10-4d601474f2ca"
 
             }, {
                 type: "text-correction",
-                question: " Сколько гласных букв? ",
+                question: " Сколько гласных букв? (пол минута)",
                 answer: "10",
                 img: "https://thxmax.ru/wp-content/uploads/zolotaya-bukva-sh-skachat-besplatno-vektor.png"
 
             }, {
                 type: "text-correction",
-                question: "Какой первый звук в слове Яблоко?",
+                question: "Какой первый звук в слове Яблоко? (1 минута)",
                 answer: "Й",
                 img: "https://i.pinimg.com/736x/2c/cf/d9/2ccfd976f2a6d51babcdfc0678ea25cd.jpg",
 
             },   {
                 type: "text-correction",
-                question: " Из одного большого слова ДОСТОПРИМЕЧАТЕЛЬНОСТЬ составить как можно больше маленьких слов.",
+                question: " Из одного большого слова ДОСТОПРИМЕЧАТЕЛЬНОСТЬ составить как можно больше маленьких слов. (4 минуты) ",
                 answer: "Да",
                 img: "https://i.pinimg.com/originals/1f/19/74/1f197431823b4f30233c26106bb542d5.jpg"
 
             },
             {
                 type: "text-correction",
-                question: "Прежде чем вся 7я о5 сядет за 100л, пре2рительно вы3 со 100ла",
+                question: "Прежде чем вся 7я о5 сядет за 100л, пре2рительно вы3 со 100ла (2 минуты)",
                 answer: "Прежде чем вся семья опять сядет за стол, предварительно вытри со стола",
                 img: "https://pickimage.ru/wp-content/uploads/images/detskie/bukvaL/characterL60.jpg"
                 
@@ -224,14 +219,14 @@
             },
             {
                 type: "text-correction",
-                question: "Первый космонавт ",
+                question: "Первый космонавт Имя и Фамилия  (1 минута)",
                 
-                answer: "Юрий Алексеевич Гагарин ",
+                answer: "Юрий Гагарин",
                 img: "https://avatars.mds.yandex.net/i?id=2e0435754c561c45b29af2a42a48fc14_l-5262023-images-thumbs&n=13"
             },
             {
                 type: "text-correction",
-                question: "Буквы выучи сперва, <br>А потом сложи в слова. <br>Тот, кто знает алфавит, <BR>Будет знать ...",
+                question: "Буквы выучи сперва, <br>А потом сложи в слова. <br>Тот, кто знает алфавит, <BR>Будет знать ...  (1 минута)",
                 answer: "Русский язык",
                 img: "https://i.pinimg.com/736x/51/a0/01/51a00194f261b1530471c549be7d80f9.jpg"
                 
@@ -239,7 +234,7 @@
             },
             {
                 type: "text-correction",
-                question: "Напишите словами число 552",
+                question: "Напишите словами число 552 (2 минуты)",
                 answer: "Пятьсот пятьдесят два",
                 img: "https://avatars.mds.yandex.net/i?id=d30f21a77ea34936e4a2079fe832703f_l-5304749-images-thumbs&n=13"
                 
@@ -247,14 +242,14 @@
             },
             {
                 type: "multiple-choice",
-                question: "Какое из этих слов в среднем роде",
+                question: "Какое из этих слов в среднем роде (2 минуты)",
                 options: ["Тюль", "Кофе", "Время", "Арбуз"],
                 answer: "Время",
                 img: "https://cdn.culture.ru/images/c57318f1-60f6-5af8-bf93-072ab30cd21a"
             },
             {
                 type: "text-correction",
-                question: "Кто самый первый входит в дом, <br>А все за ним идут хвостом?",
+                question: "Кто самый первый входит в дом, <br>А все за ним идут хвостом? (1 минут)",
                 answer: "Ключ",
                 img: "https://avatars.mds.yandex.net/i?id=5cccd4fb468fa032ca605ccbadc0c900_l-8210460-images-thumbs&n=13"
                 
@@ -262,19 +257,46 @@
             },
             {
                 type: "multiple-choice",
-                question: "Как в устной речи одно предложение отделяется от другого?",
+                question: "Как в устной речи одно предложение отделяется от другого? (3 минуты)",
                 options: ["Знаками препинания", "Ничем", "С помощью пауз и интонации", "С помощью восклитательных знаков"],
                 answer: "С помощью пауз и интонации",
                 
             },
             {
                 type: "text-correction",
-                question: "Какое слово было загадано?",
+                question: "Задача: собрать фразеологизмы и объяснить их значение.: <br>'подать', 'голова', 'бить', 'на плечах', 'рукой', 'баклуши'. (3 минуты)",
+                answer: "Да",
+                img: "https://fsd.multiurok.ru/html/2020/11/05/s_5fa31eca32807/1557807_1.jpeg"
+                
+        
+            },
+            {
+                type: "multiple-choice",
+                question: "Каждая группа получает тему. <br>Задача: за 4 минуты записать как можно больше слов на заданную тему. <br>'Россия', 'Псков', 'Русский Язык', 'Семья'",
+                options: ["Готово"],
+                answer: "Готово",
+                img: "https://cdn22.img.ria.ru/images/145581/67/1455816774_0:105:2000:1230_1920x0_80_0_0_6417d5a1e6d54a66fa40a0029aaba7b6.jpg"
+                
+            },
+
+
+            {
+                type: "text-correction",
+                question: "Я вам даю 6 минут на то, чтобы каждая группа составила рассказ на тему <br>'Родина' или 'Родной Язык'. <br>Рассказ должен состоять минимум из 5 предложений",
+                answer: "Да",
+                img: "https://cdn.tripster.ru/thumbs2/cee5b57c-a94e-11ed-9ab3-6e6cc24da076.1600x900.jpeg?width=1200&height=630"
+                
+        
+            },
+            {
+                type: "text-correction",
+                question: "Какое слово было загадано? (1 минута)",
                 answer: "Школа",
                 img: "https://a.d-cd.net/UK4z3vEU7U8YBauQadtL5SOsTT8-1920.jpg"
                 
         
             },
+
             {
                 type: "text-correction",
                 question: "Поздравляю вы прошли тест",
@@ -283,15 +305,6 @@
                 
         
             },
-
-
-
-            
-
-            
-            
-            
-
 
 
 
